@@ -1,0 +1,72 @@
+1) build this image as "docker build -t wsapp ."
+2) than run docker-compose up
+3) open a browser console and type this
+
+let ws = new WebSocket("ws://localhost:8080");
+ws.onmessage = message => console.log(`Received: ${message.data}`);
+ws.send("Hello! I'm client")
+
+4) open multiple console windows to simulate multiple clients
+
+
+
+
+let ws = new WebSocket("ws://localhost:8080");
+
+ws.onopen = function(event) {
+    var sendObj = {
+        "meta_type":"first_time",
+        "user_id":"ashish"
+    }
+    ws.send(JSON.stringify(sendObj))
+    console.log("Connected!!!");
+  };
+
+ws.onmessage = message => console.log(`Received: ${message.data}`);
+
+
+let ws = new WebSocket("ws://localhost:8080");
+ws.onmessage = message => console.log(`Received: ${message.data}`);
+
+ws.onopen = function(event) {
+    var sendObj = {
+        "meta_type":"first_time",
+        "user_id":"pradeep"
+    }
+    ws.send(JSON.stringify(sendObj))
+    console.log("Connected!!!");
+  };
+
+  ws.onmessage = message => console.log(`Received: ${message.data}`);
+
+
+let ws = new WebSocket("ws://localhost:8080");
+ws.onmessage = message => console.log(`Received: ${message.data}`);
+
+ws.onopen = function(event) {
+    var sendObj = {
+        "meta_type":"first_time",
+        "user_id":"rajesh"
+    }
+    ws.send(JSON.stringify(sendObj))
+    console.log("Connected!!!");
+  };
+
+  ws.onmessage = message => console.log(`Received: ${message.data}`);
+
+
+var sendMsgObj = {
+    "meta_type":"chat",
+    "chat_message":"hey from rajesh",
+    "user_id":"rajesh",
+    "to_user_id":"harjeet"
+}
+ws.send(JSON.stringify(sendMsgObj))
+
+var sendMsgObj = {
+    "meta_type":"chat",
+    "chat_message":"hey from pradeep",
+    "user_id":"pradeep",
+    "to_user_id":"harjeet"
+}
+ws.send(JSON.stringify(sendMsgObj))

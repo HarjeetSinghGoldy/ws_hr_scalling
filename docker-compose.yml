@@ -1,0 +1,40 @@
+version : '3'
+
+services:
+    ws1:
+        build: .
+        container_name: ws1
+        volumes:
+            - './app:/home/node/app'
+        environment:
+            - APPID=1111
+    ws2:
+        build: .
+        container_name: ws2
+        volumes:
+            - './app:/home/node/app'
+        environment:
+            - APPID=2222
+    ws3:
+        build: .
+        container_name: ws3
+        volumes:
+            - './app:/home/node/app'
+        environment:
+            - APPID=3333
+    ws4:
+        build: .
+        container_name: ws4
+        volumes:
+            - './app:/home/node/app'
+        environment:
+            - APPID=4444
+    rds:
+        image: redis
+    lb:
+        image: haproxy
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+
